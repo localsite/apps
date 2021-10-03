@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Land Use - Parks and Recreation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+<link type="text/css" rel="stylesheet" href="../../localsite/css/base.css" id="/localsite/css/base.css" />
+<link type="text/css" rel="stylesheet" href="../css/apps.css" id="/apps/css/apps.css" />
+<script type="text/javascript" src="../../localsite/js/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="../../localsite/js/jquery.min.js" id="/localsite/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
+
+<!-- Set custom app values -->
+<script>
+  if(typeof param=='undefined'){ var param={}; }
+  param.display = "everything"
+  param.state = "CO"
+  param.set = "air"
+  param.indicators = "GHG,GCC,MGHG,OGHG,HRSP,OZON,SMOG,HAPS"
+
+  heroMenu = {"air":[],"water":[],"land":[],"energy":[],"health":[],"prosperity":[]}
+  heroMenu.air.img = "../img/impact/land/air.jpg"
+  heroMenu.land.img = "../img/impact/land/land.jpg"
+  heroMenu.energy.img = "../img/impact/land/energy.jpg"
+  // More params: https://model.earth/localsite
+
+  var menuImages = "";
+  $.each(heroMenu, function (key, val) {
+        //alert(key + val);
+        //alert(heroMenu[key].img);
+        menuImages += "<a href='../img/impact/land/" + key + ".jpg'><img src='../img/impact/land/" + key + ".jpg'></a>";
+  });
+  $(document).ready(function() {
+    $("#menuImages").html(menuImages);
+  });
+  loadMarkdown("README.md", "readmeDiv", "_parent");
+</script>
+
+<script type="text/javascript" src="../../localsite/js/localsite.js"></script>
+
+<!-- Set custom app values -->
+<script>
+    //param.titleArray = ["Your","Community"]
+    //param.startTitle = "Your Community"
+    //param.headerLogo = "<img src='/apps/smm/img/epa-header-logo.png' style='width:280px'>";
+    //param.headerFile = "header.html"
+    //param.footer = "footer.html"
+</script>
+
+<!-- Interactive state menu - Display beyond carbon table -->
+<script type="text/javascript" src="../js/bc.js" id="/apps/js/bc.js"></script>
+<script type="text/javascript" src="land.js" id="/apps/js/bc.js"></script>
+<script>
+    setImpactIconStyles("parks");
+</script>
+
+<style>
+  .btn {
+    font-weight: 600;
+  }
+  #menuImages img {
+    width:150px;
+    border:2px solid #fff;
+    float:left;
+    margin-right:8px;
+    margin-bottom: 8px;
+  }
+  #hero-landscape-image2 {
+    background-image: url(https://model.earth/us-states/images/backgrounds/1280x720/landscape/south-dakota.jpg);
+  }
+</style>
+</head>
+
+
+<body>
+
+<div id="hero_holder">
+  <!-- State image refreshed by localsite/js/map-filters.js -->
+  <div id="hero-landscape-image" class="bgimg" style="z-index:-1; min-height: 550px; background-position: 0 54px; position: absolute; left:0; right:0; opacity: 0.6; background-color:#888">
+  </div>
+
+
+  <div class="content contentpadding" style="min-height: 550px; padding-top:60px">
+    <div class="hero-text">
+
+      <div style="font-size:60px; line-height: 1em; font-weight:800">Nature's Lifecycle</div><br>
+      <div style="font-size:32px; line-height: 1.2em; font-weight:400">
+        Parks and Recreation
+      </div><br>
+
+      <div style="font-size:20px; line-height: 1.2em;">
+        <br>
+
+        <div style="font-size:18px;">
+
+        
+
+        </div>
+
+        <br>
+      </div>
+    </div>
+
+    <div class="hero-bucket" style="max-width: 680px; float:left">
+      
+      <div style="font-size:22px; margin-top:14px; margin-bottom:18px; font-weight:500">Explore your state...</div>
+
+      <div id="relocatedStateMenu"></div><br>
+
+
+      <div id="choose-counties" style="display:none">
+        <a href="#mapview=counties" onclick="$('#filterClickLocation').click();return false;">Select one or more counties</a><br>
+      </div>
+
+    </div>
+
+    <div style="clear:both"></div>
+    <br><br><br>
+    <div id="menuImages"></div>
+
+    <div id="insertImpactIcons" style="clear:both"></div>
+
+    
+  </div>
+</div>
+
+<div style="clear:both" class="content contentpadding">
+    <div id="readmeDiv"></div>
+    <div id="dataHeader"></div>
+    <div id="dataDisplay"></div>
+</div>
+
+
+<div>
+  <!-- State image refreshed by localsite/js/map-filters.js -->
+  <div id="hero-landscape-image2" class="bgimg" style="z-index:-1; min-height: 550px; background-position: 0 54px; position: absolute; left:0; right:0; opacity: 0.6; background-color:#888">
+  </div>
+
+
+  <div class="content contentpadding" style="min-height: 550px; padding-top:60px">
+    <div class="hero-text">
+
+      <div style="font-size:60px; line-height: 1em; font-weight:800">Park Sustainability Heros</div><br>
+      <div style="font-size:32px; line-height: 1.2em; font-weight:400">
+        Parks and Recreation
+      </div><br>
+
+      <div style="font-size:20px; line-height: 1.2em;">
+        <br>
+
+        <div style="font-size:18px;">
+
+        
+
+        </div>
+
+        <br>
+      </div>
+    </div>
+
+    <div id="hero-rect" style="max-width: 680px; float:left">
+      
+
+
+
+      <div id="choose-counties" style="display:none">
+        <a href="#mapview=counties" onclick="$('#filterClickLocation').click();return false;">Select one or more counties</a><br>
+      </div>
+
+    </div>
+
+    <div style="clear:both"></div>
+    <br><br><br>
+    <div id="menuImages"></div>
+
+    <div id="insertImpactIcons" style="clear:both"></div>
+
+    
+  </div>
+</div>
+
+
+</body>
+</html>
+
+
