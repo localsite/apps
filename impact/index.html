@@ -95,10 +95,10 @@
       loadMarkdown("README.md", "readmeDiv", "_parent");
       loadMarkdown("ABOUT.md", "aboutDiv", "_parent");
 
-      renderImpactWidget();
+      //renderImpactWidget();
     </script>
 
-    <!-- Interactive state menu - Display beyond carbon table -->
+    <!-- Interactive state menu - Display beyond carbon table in #dataDisplay -->
     <script
       type="text/javascript"
       src="../js/bc.js"
@@ -111,9 +111,6 @@
       }
       .btn {
         font-weight: 600;
-      }
-      #hero-mini {
-        floatx: left;
       }
       #hero-rect {
         overflow: auto;
@@ -194,9 +191,8 @@ The .displayOnload divs are displayed when the base.css file loads. This prevent
 
           <div
             id="hero-mini"
-            style="float: left; width: 100%; max-width: 740px"
+            style="float: left; width: 100%"
           >
-            Enter your city, state or zip...<br />
             <div id="impact-widget-horizontal"></div>
 
             <div id="insertImpactIcons"></div>
@@ -226,5 +222,6 @@ The .displayOnload divs are displayed when the base.css file loads. This prevent
 
     <div id="bodyFile"></div>
     
-  </body>
+  <link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
+</body>
 </html>

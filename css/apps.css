@@ -35,12 +35,25 @@
 #resultsTable {
   margin-bottom: 8px;
 }
+#hero_holder {
+  position: relative;
+}
 .hero-text {
-  float:left;
+  /* float:left; */
   color:#fff;
-  text-shadow: 2px 2px 8px #111;
   padding-right:80px;
+}
+.hero-title {
+  font-size: 55px;
+  line-height: 1em;
   font-weight:800;
+  text-shadow: 2px 2px 8px #111;
+}
+.hero-title-lg {
+  font-size:54px;
+  line-height: 1.1em;
+  font-weight:800;
+  text-shadow: 2px 2px 6px #333;
 }
 @media (max-width: 800px) {
   .hero-text {

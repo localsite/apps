@@ -12,12 +12,14 @@ param.state = "GA"
 param.show = "vehicles"
 param.display = "everything"
 param.indicators = "JOBS,VADD,ENRG,NNRG,RNRG"
-param.regiontitle = "West Central Georgia"
+//param.regiontitle = "West Central Georgia"
 param.lat = "33.0362"
 param.lon = "-85.0322"
 param.zoom = 14
+
+
 </script>
-<script type="text/javascript" src="../../localsite/js/localsite.js"></script>
+<script type="text/javascript" src="../../localsite/js/localsite.js?showheader=true&showsearch=true"></script>
 
 <style>
 .filterbarOffset {
@@ -40,8 +42,16 @@ Photo by <a href="https://unsplash.com/@studiodenley?utm_source=unsplash&utm_med
       <div class="displayOnload" id="hero-content" style="display: none; min-height: 550px;">
         <div id="hero-rect">
 
+          <!-- Quick hack
           <div style="font-size:18px; margin-bottom:10px; font-weight:600">Choose a state</div>
           <div id="relocatedStateMenu"></div><br>
+          -->
+
+          <h3 style="margin-top:0px">Vehicle Parts Manufacturing</h3>
+
+          <!--
+          Data pulled from <a href="https://explorer.gdol.ga.gov/vosnet/drills/employer/empdrill.aspx?session=jobseek">Labor Market Explorer</a> in 2021.<br><br>
+          -->
           <a href="#mapview=counties" onclick="$('#filterClickLocation').click();return false;">Select Counties and Regions</a>
         </div>
       </div>
@@ -64,6 +74,7 @@ Probably need to use javascript to jump down, or resolve why URL is reset.  Try 
 
 <div id="bodyFile"></div>
 
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
 </body>
 </html>
 

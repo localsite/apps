@@ -10,6 +10,7 @@
 <script type="text/javascript" src="../../localsite/js/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
 <script type="text/javascript" src="../../localsite/js/jquery.min.js" id="/localsite/js/jquery.min.js"></script>
 <script type="text/javascript" src="../../localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
+
 <script type="text/javascript" src="../js/apps-menus.js" id="/apps/js/apps-menus.js"></script>
 <script type="text/javascript" src="../js/apps-impact.js" id="/apps/js/apps-impact.js"></script>
 
@@ -19,15 +20,15 @@
   param.display = "everything"
   param.lat = 37
   param.lon = -95.7
-  param.state = "IA"
+  //param.state = "GA"
   param.set = "air"
-  param.indicators = "GHG,GCC,MGHG,OGHG,HRSP,OZON,SMOG,HAPS"
+  param.indicators = "GHG,GCC,MGHG,OGHG,HRSP,OZON,SMOG,HAPS,VADD,JOBS"
   // More params: https://model.earth/localsite
 
   // Shared Sections menu
   if(typeof menu=='undefined'){ var menu={}; }
-  // IMPORTANT: The names on this line must include the param's below it.
-  menu = {"home":[],"composting":[],"biodiesel":[]}
+  
+  menu = {"home":[],"composting":[],"biodiesel":[]} // The names on this line must include the param's below it.
 
   menu.home.img = "/apps/school/img/hero/ses.jpg"
   menu.home.page = "/apps/school/"
@@ -50,7 +51,7 @@
   
 </script>
 
-<script type="text/javascript" src="../../localsite/js/localsite.js"></script>
+<script type="text/javascript" src="../../localsite/js/localsite.js?showheader=true&showsearch=true"></script>
 
 
 <script>
@@ -58,11 +59,12 @@
 // Don’t clear more than 24hrs or you’ll wipe out your saved passwords and cookie settings.
 loadMarkdown("README.md", "readmeDiv", "_parent");
 loadMarkdown("ABOUT.md", "aboutDiv", "_parent");
-renderImpactWidget();
+//renderImpactWidget();
 </script>
 
-<!-- Interactive state menu - Display beyond carbon table -->
+<!-- Interactive state menu - Display beyond carbon table in #dataDisplay, listens for hash change -->
 <script type="text/javascript" src="../js/bc.js" id="/apps/js/bc.js"></script>
+<script>showLocationStats();</script>
 
 <style>
   .bgimg {
@@ -71,12 +73,22 @@ renderImpactWidget();
   .btn {
     font-weight: 600;
   }
-  #hero-mini {
-    floatX: left;
-  }
   #hero-rect {
     overflow: auto;
     float: none !important;
+  }
+  /* TO DO: Only set this css when state param is null, otherwise two hero images are loaded. */
+  .bgimg {
+    background-image: url(https://model.earth/us-states/images/backgrounds/1280x720/landscape/south-dakota.jpg);
+  }
+  .hero-title {
+    margin-bottom: 4px;
+  }
+  .location_titles {
+    font-size: 28px;
+    margin-bottom: 14px;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px #111;
   }
 </style>
 </head>
@@ -103,62 +115,72 @@ The .displayOnload divs are displayed when the base.css file loads. This prevent
 
   <div class="displayOnload" id="hero-content" style="display: none; min-height: 550px;">
     
-    
     <div class="hero-text">
 
-      <div style="font-size:60px; line-height: 1em; font-weight:800">Your<br>Community</div><br>
-      <div style="font-size:28px; line-height: 1.2em; font-weight:600">
-        Copy base folder and<br>add your local settings
-      </div><br>
+      <div id="stateName" class="hero-title">My Community</div>
+      <div class="location_titles"></div><!-- -->
+      <br>
 
-      <div style="font-size:20px; line-height: 1.2em;">
-        <br>
+      <div>
+        <!--
+        <div style="font-size:28px; line-height: 1.2em; font-weight:600">
+          Copy base folder and<br>add your local settings
+        </div><br>
+        -->
 
-        <div style="font-size:18px;">
-
-        <a href="../../community/challenge/" class="btn btn-success" style="text-shadow: none; border:2px solid #ddd">Join the Web Challenge</a><br> 
-
-        <a href="../../community/challenge/how/" class="btn btn-primary" style="text-shadow: none; border:2px solid #ddd">How to Create a Winning Entry</a><br>
-
-        <a href="../../community/projects/" class="btn btn-warning" style="text-shadow: none; border:2px solid #ddd">Project Coding and Design Areas</a><br>
-
+        <div id="hero-mini" style="float:left; margin-right:30px; padding-top:4px">
         
+          <div id="impact-widget-vertical"></div>
+
+          <div id="insertImpactIcons"></div>
+          <div style="clear:both"></div>
+
         </div>
 
-        <br>
-      </div>
-    </div>
+        <!--
+        <div style="font-size:20px; line-height: 1.2em;">
+          <br>
 
+          <div style="font-size:18px;">
 
-    <div id="hero-rect" style="max-width: 740px; float:left">
+          <a href="../../community/challenge/" class="btn btn-success" style="text-shadow: none; border:2px solid #ddd">Join the Web Challenge</a><br> 
+
+          <a href="../../community/challenge/how/" class="btn btn-primary" style="text-shadow: none; border:2px solid #ddd">How to Create a Winning Entry</a><br>
+
+          <a href="../../community/projects/" class="btn btn-warning" style="text-shadow: none; border:2px solid #ddd">Project Coding and Design Areas</a><br>
+
+          
+          </div>
+
+          <br>
+        </div>
+        -->
+
       
-      <div style="font-size:22px; margin-top:14px; margin-bottom:18px; font-weight:500">Getting Started...</div>
-
-      1. Find out where your state and county ranks in combating climate change.<br><br>
-      <div id="relocatedStateMenu"></div><br>
-
-      2. Select one of the six main impact areas below. Air, Water, Land, Energy...<br><br>
-      3. Choose one or more commodities in the center column of the input-output chart.<br><br>
-      4. Adjust sliders to view potential impacts to changes in commodity levels.<br><br>
-      5. Copy from the URL and <a href="../../localsite/#parameters">format the parameters</a> in a copy of one of the <a href="../" style="white-space:nowrap">index.html pages</a>.<br><br>
 
 
-      <div id="choose-counties" style="display:none">
-        <a href="#mapview=counties" onclick="$('#filterClickLocation').click();return false;">Select one or more counties</a><br>
+        <div id="hero-rect" style="overflow: auto; max-width: 740px; float:left">
+          
+          <div style="font-size:24px; margin-top:14px; margin-bottom:18px; font-weight:500">Explore your local industries and impacts<!--Getting Started-->...</div>
+
+          1. Select your state and <a href="#mapview=counties" onclick="$('#filterClickLocation').click();return false;">one or more counties</a>.<br><br>
+          <div id="relocatedStateMenu" style="float:left; margin-bottom:6px;"></div>
+          <div style="clear:both"></div><br>
+          2. Select a focus area: Air, Water, Land, Energy, Health, Prosperity<br><br>
+          3. Choose commodities in the center column of the Input-Output chart.<br><br>
+          4. Adjust sliders to view the effects of changes in commodity levels.<br><br>
+         
+          To create your own page, copy your URL parameters and <a href="../../localsite/#parameters">format as javascript</a><br>
+          in a copy of an existing <a href="../" style="white-space:nowrap">index.html</a> community page.<br><br>
+
+
+          
+
+        </div>
+
       </div>
 
     </div>
-
-    <div id="hero-mini" style="float:left; width:100%; max-width: 740px;">
-      
-      <div id="impact-widget-horizontal"></div>
-
-      <div id="insertImpactIcons"></div>
-      <div style="clear:both"></div><br>
-
-    </div>
-
-
 
   </div>
 
@@ -184,8 +206,9 @@ The .displayOnload divs are displayed when the base.css file loads. This prevent
 
 </div>
 
-<div id="bodyFile"></div>
 
+
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
 </body>
 </html>
 

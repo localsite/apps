@@ -13,12 +13,13 @@
 <script type="text/javascript" src="../../localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
 
 <!-- Set custom app values in the following include file parameters -->
-<script type="text/javascript" src="../../localsite/js/localsite.js?display=everything&lat=37&lon=-95.7&set=air&indicators=GHG,GCC,MGHG,OGHG,HRSP,OZON,SMOG,HAPS,ENRG,JOBS,VADD,WATR"></script>
+<script type="text/javascript" src="../../localsite/js/localsite.js?display=everything&showheader=true&showsearch=true&lat=37&lon=-95.7&set=air&indicators=GHG,GCC,MGHG,OGHG,HRSP,OZON,SMOG,HAPS,ENRG,JOBS,VADD,WATR"></script>
 
 
 
-<!-- Interactive state menu - Display beyond carbon table -->
+<!-- Interactive state menu - Display beyond carbon table in #dataDisplay -->
 <script type="text/javascript" src="../js/bc.js" id="/apps/js/bc.js"></script>
+<script>showLocationStats();</script>
 
   
 
@@ -82,7 +83,7 @@
     <div id="dataDisplay"></div>
 
     <div id="choose-your-state-intro">
-      Choose a state to view its impacts and initiatives.<br>
+      Choose a state to view impacts and initiatives.<br>
     </div>
     <div id="choose-counties" style="display:none">
       <a href="#mapview=counties" onclick="$('#filterClickLocation').click();return false;">Select one or more counties</a><br>
@@ -128,6 +129,7 @@
 
 <div id="bodyFile"></div>
 
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
 </body>
 </html>
 

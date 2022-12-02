@@ -52,7 +52,7 @@
   
 </script>
 
-<script type="text/javascript" src="../../localsite/js/localsite.js"></script>
+<script type="text/javascript" src="../../localsite/js/localsite.js?showheader=true&showsearch=true"></script>
 
 
 <script>
@@ -60,11 +60,12 @@
 // Don’t clear more than 24hrs or you’ll wipe out your saved passwords and cookie settings.
 loadMarkdown("README.md", "readmeDiv", "_parent");
 loadMarkdown("ABOUT.md", "aboutDiv", "_parent");
-renderImpactWidget();
+//renderImpactWidget();
 </script>
 
-<!-- Interactive state menu - Display beyond carbon table -->
+<!-- Interactive state menu - Display beyond carbon table in #dataDisplay -->
 <script type="text/javascript" src="../js/bc.js" id="/apps/js/bc.js"></script>
+<script>showLocationStats();</script>
 
 <style>
   .bgimg {
@@ -72,9 +73,6 @@ renderImpactWidget();
   }
   .btn {
     font-weight: 600;
-  }
-  #hero-mini {
-    floatX: left;
   }
   #hero-rect {
     overflow: auto;
@@ -145,7 +143,7 @@ The .displayOnload divs are displayed when the base.css file loads. This prevent
 
     </div>
 
-    <div id="hero-mini" style="float:left; width:100%; max-width: 740px;">
+    <div id="hero-mini" style="float:left; width:100%;">
       
       <div id="impact-widget-horizontal"></div>
 
@@ -181,6 +179,7 @@ The .displayOnload divs are displayed when the base.css file loads. This prevent
 </div>
 
 
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
 </body>
 </html>
 

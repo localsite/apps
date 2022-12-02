@@ -1,12 +1,12 @@
-# About our Sustainable Community Project
+# About our Community Project
 
 **Project Impact**
 
-Our project makes a real-world impact in addressing the challenge by providing users with information concerning their community's environment and then immediately offering ways to start getting involved and becoming part of a solution rather than just monitoring the problem. 
+Our project makes a real-world impact by providing users with information concerning their community's environment and then immediately offering ways to start getting involved and becoming part of a solution rather than just monitoring the problem. 
 
 **Innovation**
 
-Our community sustainability page is innovative and creative and takes a novel approach by bringing together innovative tools and information to evoke climate empathy and become the catalyst for action. 
+Our community page  is innovative and creative and takes a novel approach by bringing together innovative tools and information to evoke climate empathy and become the catalyst for action. 
 
 **Clarity**
 
@@ -20,7 +20,7 @@ Our project includes the following to make information and tools clear, accessib
 
 **Implementation**
 
-Our community sustainability page provides a new functional solution in the area(s) of providing users concerned with environmental issues information on their community and ways to communicate, volunteer and assist (mainly take immediate action)
+Our community page  provides a new functional solution in the area(s) of providing users concerned with environmental issues information on their community and ways to communicate, volunteer and assist (mainly take immediate action)
 
 
 **Integration**
